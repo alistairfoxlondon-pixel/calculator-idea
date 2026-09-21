@@ -51,8 +51,8 @@ const CONFIG = {
     'link-audit': 5
   },
   tools: {
-    'seo-audit': { label: 'SEO Audit', desc: 'Titles, metas, headings and indexability.' },
-    'adsense-audit': { label: 'AdSense Audit', desc: 'Readiness for AdSense programme.' },
+    'seo-audit': { label: 'SEO Audit', desc: 'Titles and headings done right' },
+    'adsense-audit': { label: 'AdSense Audit', desc: 'We check if your site looks ready for AdSense review.' },
     'speed-audit': { label: 'Speed Audit', desc: 'Weight, requests and render-blocking.' },
     'link-audit': { label: 'Link Audit', desc: 'Graph, redirects and orphans.' }
   }
@@ -707,10 +707,20 @@ function layout({title, body, extraHead=''}) {
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js" defer></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&family=Manrope:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#FFFFFF;--bg-muted:#F7F8FA;--border:#E5E7EB;--text:#101828;--text-muted:#667085;--accent:#F97316;--accent-hover:#EA580C;--success:#067647;--warning:#B54708;--danger:#B42318}
+:root{--bg:#FFF7ED;--bg-muted:#FFFBEB;--border:#FED7AA;--text:#431407;--text-muted:#9A3412;--accent:#F97316;--accent-hover:#EA580C;--success:#065F46;--warning:#92400E;--danger:#B42318}
+html.dark{--bg:#0F172A;--bg-muted:#1E293B;--border:#334155;--text:#F1F5F9;--text-muted:#94A3B8;--accent:#FB923C;--accent-hover:#F97316;--success:#10B981;--warning:#F59E0B;--danger:#F87171}
+html.dark body{background:var(--bg);color:var(--text)}
+html.dark .header{background:rgba(15,23,42,.96);border-color:var(--border)}
+html.dark .card{background:#1E293B;border-color:var(--border)}
+html.dark .card-muted{background:var(--bg-muted)}
+html.dark .btn-secondary{background:#1E293B;border-color:var(--border);color:var(--text)}
+html.dark .input{background:#0F172A;border-color:var(--border);color:var(--text)}
+html.dark .footer{background:#020617;border-color:var(--border)}
+html.dark .progress{background:#334155}
+.light-img{display:block}.dark-img{display:none}html.dark .light-img{display:none}html.dark .dark-img{display:block}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;transition:background 200ms, color 200ms}
 a{color:inherit;text-decoration:none}
 h1,h2,h3{line-height:1.2;letter-spacing:-.02em}
 .container{max-width:1120px;margin:0 auto;padding:0 16px}
@@ -728,7 +738,7 @@ h1,h2,h3{line-height:1.2;letter-spacing:-.02em}
 .btn-secondary{background:white;border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-weight:500;font-size:14px;cursor:pointer;transition:all 150ms}
 .btn-secondary:hover{border-color:var(--text-muted);background:var(--bg-muted)}
 .card{border:1px solid var(--border);border-radius:12px;background:white;box-shadow:0 1px 2px rgba(16,24,40,.06);padding:20px;transition:all 150ms}
-.card:hover{box-shadow:0 4px 12px rgba(16,24,40,.08)}
+.card:hover{box-shadow:0 8px 24px rgba(16,24,40,.12);transform:translateY(-1px)}
 @media(min-width:768px){.card{padding:24px}}
 .card-muted{background:var(--bg-muted);border-color:var(--border)}
 .badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid var(--border);letter-spacing:.02em}
@@ -743,7 +753,7 @@ h1,h2,h3{line-height:1.2;letter-spacing:-.02em}
 .input{border:1.5px solid var(--border);border-radius:8px;padding:11px 14px;font-size:14px;width:100%;background:white;transition:all 150ms}
 .input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(249,115,22,.12)}
 .input::placeholder{color:var(--text-muted)}
-.score-dial{width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:26px;border:5px solid var(--border);background:white;flex-shrink:0}
+.score-dial{width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:26px;border:5px solid var(--border);background:white;flex-shrink:0;transition:transform 300ms}
 .score-Aplus,.score-A{border-color:var(--success);color:var(--success)} .score-B{border-color:#2E90FA;color:#2E90FA} .score-C{border-color:var(--warning);color:var(--warning)} .score-D{border-color:#EF6820;color:#EF6820} .score-F{border-color:var(--danger);color:var(--danger)}
 .category-bar{height:6px;background:var(--bg-muted);border-radius:999px;overflow:hidden}
 .category-fill{height:100%;border-radius:999px;transition:width 600ms ease}
@@ -777,6 +787,10 @@ ${extraHead}
       <a href="/methodology">Methodology</a>
     </nav>
     <div style="display:flex;align-items:center;gap:10px">
+      <button id="themeToggle" aria-label="Toggle theme" title="Light / dark" style="width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:var(--bg-muted);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text)">
+        <span class="light-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg></span>
+        <span class="dark-icon" style="display:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span>
+      </button>
       <a href="/seo-audit" class="btn-primary">Run audit <span style="opacity:.9">→</span></a>
       <button class="mobile-menu btn-ghost" id="mobileBtn" aria-label="Menu" style="padding:8px">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -790,7 +804,7 @@ ${body}
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px">
       <div style="min-width:220px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span class="logo-mark" style="width:28px;height:28px;font-size:12px">A</span><strong style="font-size:15px">Audit Platform</strong></div>
-        <p style="font-size:13px;color:var(--text-muted);line-height:1.6;margin:0;max-width:300px">Free audits with real crawls. Evidence for every finding.</p>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.6;margin:0;max-width:300px">We open the pages ourselves and show proof for each point.</p>
       </div>
       <div><h4>Tools</h4><a href="/seo-audit">SEO Audit</a><a href="/adsense-audit">AdSense Audit</a><a href="/speed-audit">Speed Audit</a><a href="/link-audit">Link Audit</a></div>
       <div><h4>Learn</h4><a href="/methodology">Methodology</a><a href="/guides">Guides</a><a href="/bot">Bot</a><a href="/security">Security</a></div>
@@ -806,6 +820,20 @@ ${body}
 document.getElementById('mobileBtn')?.addEventListener('click',()=>{
   document.getElementById('mainNav')?.classList.toggle('open');
 });
+// theme
+(function(){
+  const saved=localStorage.getItem('theme');
+  const prefers=window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  const initial=saved||prefers;
+  if(initial==='dark') document.documentElement.classList.add('dark');
+  function updateIcons(){ const isDark=document.documentElement.classList.contains('dark'); document.querySelector('.light-icon').style.display=isDark?'none':'block'; document.querySelector('.dark-icon').style.display=isDark?'block':'none'; }
+  updateIcons();
+  document.getElementById('themeToggle')?.addEventListener('click',()=>{
+    document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', document.documentElement.classList.contains('dark')?'dark':'light');
+    updateIcons();
+  });
+})();
 </script>
 </body>
 </html>`;
@@ -817,8 +845,8 @@ function homePage() {
     <section class="container" style="padding:32px 16px 24px">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap">
         <div style="flex:1;min-width:280px;max-width:520px">
-          <h1 style="font-family:Poppins, Inter, sans-serif;font-size:42px;font-weight:700;letter-spacing:-.03em;line-height:1.05;margin:0;color:var(--text)">Audit any website<br><span style="color:var(--accent)">in seconds</span></h1>
-          <p style="font-family:Manrope, Inter, sans-serif;font-size:16px;color:var(--text-muted);margin:14px 0 24px;line-height:1.6;max-width:460px">Paste a URL. We fetch real pages and show what to fix with clear evidence.</p>
+          <h1 style="font-family:Poppins, Inter, sans-serif;font-size:44px;font-weight:700;letter-spacing:-.04em;line-height:1.02;margin:0;color:var(--text)">Check your site<br><span style="color:var(--accent);position:relative">properly<span style="position:absolute;left:0;right:0;bottom:-4px;height:6px;background:var(--accent);opacity:.15;border-radius:99px"></span></span></h1>
+          <p style="font-family:Manrope, Inter, sans-serif;font-size:16px;color:var(--text-muted);margin:14px 0 24px;line-height:1.6;max-width:460px">Drop your link. We'll open the pages for real and tell you what to fix.</p>
           <form id="heroForm" onsubmit="return startAudit(event)" style="display:flex;gap:8px;align-items:center;background:white;border:1.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 1px 2px rgba(16,24,40,.06);max-width:520px">
             <input class="input" name="url" placeholder="https://example.com" required style="flex:1;min-width:180px;border:none;box-shadow:none;padding:11px 12px;background:transparent;font-size:14px" />
             <select name="tool" class="input" style="width:120px;border:none;background:var(--bg-muted);padding:9px 10px;font-size:13px">
@@ -827,20 +855,21 @@ function homePage() {
               <option value="speed-audit">Speed</option>
               <option value="link-audit">Link</option>
             </select>
-            <button class="btn-primary" type="submit" style="white-space:nowrap;padding:10px 16px">Run audit</button>
+            <button class="btn-primary" type="submit" style="white-space:nowrap;padding:10px 16px">Check now</button>
           </form>
           <div id="heroProgress" style="display:none;margin-top:14px"></div>
         </div>
-        <div style="flex:1;min-width:280px;max-width:520px;display:flex;align-items:center;justify-content:center">
-          <img src="/hero-illustration.png" alt="Website audit illustration" style="width:100%;max-width:480px;height:auto;border-radius:12px;object-fit:contain" loading="lazy" />
+        <div style="flex:1;min-width:280px;max-width:520px;display:flex;align-items:center;justify-content:center;background:transparent;border-radius:16px;padding:4px">
+          <img src="/hero-illustration.png" alt="Website audit light" class="light-img" style="width:100%;max-width:480px;height:auto;border-radius:12px;object-fit:contain" loading="lazy" />
+          <img src="/hero-illustration-dark.png" alt="Website audit dark" class="dark-img" style="width:100%;max-width:480px;height:auto;border-radius:12px;object-fit:contain" loading="lazy" />
         </div>
       </div>
     </section>
     <section style="background:var(--bg-muted);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 0;margin-top:12px">
       <div class="container">
         <div style="text-align:center;max-width:640px;margin:0 auto 20px">
-          <h2 style="font-family:Poppins, sans-serif;font-size:22px;font-weight:600;margin:0">Tools for every audit</h2>
-          <p style="font-family:Manrope, sans-serif;font-size:14px;color:var(--text-muted);margin:6px 0 0">Four focused checks. Each shows evidence and fix.</p>
+          <h2 style="font-family:Poppins, sans-serif;font-size:22px;font-weight:600;margin:0">Four ways to check</h2>
+          <p style="font-family:Manrope, sans-serif;font-size:14px;color:var(--text-muted);margin:6px 0 0">Pick one. Each one shows real proof.</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
           <a href="/seo-audit" class="card" style="padding:0;overflow:hidden;display:block">
@@ -849,15 +878,15 @@ function homePage() {
           </a>
           <a href="/adsense-audit" class="card" style="padding:0;overflow:hidden;display:block">
             <div style="height:140px;background:white;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid var(--border)"><svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div>
-            <div style="padding:16px"><h3 style="margin:0 0 6px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px"><span style="width:28px;height:28px;border-radius:8px;background:var(--bg-muted);border:1px solid var(--border);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></span> AdSense Audit</h3><p style="font-size:13px;color:var(--text-muted);margin:0;line-height:1.5">Readiness for program.</p></div>
+            <div style="padding:16px"><h3 style="margin:0 0 6px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px"><span style="width:28px;height:28px;border-radius:8px;background:var(--bg-muted);border:1px solid var(--border);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></span> AdSense Audit</h3><p style="font-size:13px;color:var(--text-muted);margin:0;line-height:1.5">Ready for AdSense review</p></div>
           </a>
           <a href="/speed-audit" class="card" style="padding:0;overflow:hidden;display:block">
             <div style="height:140px;background:white;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid var(--border)"><svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></div>
-            <div style="padding:16px"><h3 style="margin:0 0 6px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px"><span style="width:28px;height:28px;border-radius:8px;background:var(--bg-muted);border:1px solid var(--border);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg></span> Speed Audit</h3><p style="font-size:13px;color:var(--text-muted);margin:0;line-height:1.5">Weight and blocking.</p></div>
+            <div style="padding:16px"><h3 style="margin:0 0 6px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px"><span style="width:28px;height:28px;border-radius:8px;background:var(--bg-muted);border:1px solid var(--border);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg></span> Speed Audit</h3><p style="font-size:13px;color:var(--text-muted);margin:0;line-height:1.5">Page weight and blocking time</p></div>
           </a>
           <a href="/link-audit" class="card" style="padding:0;overflow:hidden;display:block">
             <div style="height:140px;background:white;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid var(--border)"><svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
-            <div style="padding:16px"><h3 style="margin:0 0 6px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px"><span style="width:28px;height:28px;border-radius:8px;background:var(--bg-muted);border:1px solid var(--border);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/></svg></span> Link Audit</h3><p style="font-size:13px;color:var(--text-muted);margin:0;line-height:1.5">Graph and redirects.</p></div>
+            <div style="padding:16px"><h3 style="margin:0 0 6px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px"><span style="width:28px;height:28px;border-radius:8px;background:var(--bg-muted);border:1px solid var(--border);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/></svg></span> Link Audit</h3><p style="font-size:13px;color:var(--text-muted);margin:0;line-height:1.5">Links and redirects</p></div>
           </a>
         </div>
       </div>
@@ -865,25 +894,25 @@ function homePage() {
     <section class="container" style="padding:28px 16px">
       <div style="display:flex;gap:32px;align-items:center;flex-wrap:wrap;background:white;border:1px solid var(--border);border-radius:12px;padding:20px">
         <div style="flex:1;min-width:240px">
-          <h2 style="font-family:Poppins, sans-serif;font-size:18px;font-weight:600;margin:0 0 8px">Real example</h2>
-          <p style="font-size:13px;color:var(--text-muted);margin:0 0 12px;line-height:1.6">We crawl real pages, capture timing and bytes, and keep evidence for every check you can open.</p>
+          <h2 style="font-family:Poppins, sans-serif;font-size:18px;font-weight:600;margin:0 0 8px">What you get</h2>
+          <p style="font-size:13px;color:var(--text-muted);margin:0 0 12px;line-height:1.6">We load the pages for real and keep a snapshot you can open for every point.</p>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center;background:var(--bg-muted);border:1px solid var(--border);border-radius:8px;padding:12px">
             <div><div style="font-size:18px;font-weight:700">50</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">pages</div></div>
             <div style="border-left:1px solid var(--border);border-right:1px solid var(--border)"><div style="font-size:18px;font-weight:700">100%</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">evidence</div></div>
             <div><div style="font-size:18px;font-weight:700">4</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">tools</div></div>
           </div>
         </div>
-        <div style="flex:1;min-width:260px;display:flex;justify-content:center"><img src="/about-illustration.png" alt="Team reviewing audit" style="width:100%;max-width:420px;height:auto;border-radius:8px;object-fit:contain" loading="lazy" /></div>
+        <div style="flex:1;min-width:260px;display:flex;justify-content:center;background:var(--bg);border-radius:12px;padding:6px"><img src="/about-illustration.png" alt="Team light" class="light-img" style="width:100%;max-width:420px;height:auto;border-radius:8px;object-fit:contain" loading="lazy" /><img src="/about-illustration-dark.png" alt="Team dark" class="dark-img" style="width:100%;max-width:420px;height:auto;border-radius:8px;object-fit:contain" loading="lazy" /></div>
       </div>
     </section>
     <section class="container" style="padding:16px 16px 24px" x-data="{open:1}">
       <h2 style="font-size:15px;font-weight:600;margin:0 0 12px">Questions</h2>
       <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;background:white">
-        <div style="border-bottom:1px solid var(--border)"><button @click="open=open===1?null:1" style="width:100%;text-align:left;padding:13px 16px;background:white;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:500"><span>Is it free</span><span style="color:var(--text-muted)" x-text="open===1?'−':'+'"></span></button><div x-show="open===1" style="padding:0 16px 13px;font-size:13px;color:var(--text-muted);line-height:1.6">Yes free for 50 pages. No signup needed.</div></div>
-        <div style="border-bottom:1px solid var(--border)"><button @click="open=open===2?null:2" style="width:100%;text-align:left;padding:13px 16px;background:white;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:500"><span>How is score calculated</span><span style="color:var(--text-muted)" x-text="open===2?'−':'+'"></span></button><div x-show="open===2" style="padding:0 16px 13px;font-size:13px;color:var(--text-muted);line-height:1.6">Category 100 earned applicable. Tool weighted average. Unknown excluded.</div></div>
-        <div style="border-bottom:1px solid var(--border)"><button @click="open=open===3?null:3" style="width:100%;text-align:left;padding:13px 16px;background:white;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:500"><span>Store my HTML</span><span style="color:var(--text-muted)" x-text="open===3?'−':'+'"></span></button><div x-show="open===3" style="padding:0 16px 13px;font-size:13px;color:var(--text-muted);line-height:1.6">Raw 30 days, artifacts 90 days, logs 14 days.</div></div>
-        <div style="border-bottom:1px solid var(--border)"><button @click="open=open===4?null:4" style="width:100%;text-align:left;padding:13px 16px;background:white;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:500"><span>Respect robots.txt</span><span style="color:var(--text-muted)" x-text="open===4?'−':'+'"></span></button><div x-show="open===4" style="padding:0 16px 13px;font-size:13px;color:var(--text-muted);line-height:1.6">Yes. Respects robots.txt and Crawl delay.</div></div>
-        <div><button @click="open=open===5?null:5" style="width:100%;text-align:left;padding:13px 16px;background:white;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:500"><span>Can I cancel</span><span style="color:var(--text-muted)" x-text="open===5?'−':'+'"></span></button><div x-show="open===5" style="padding:0 16px 13px;font-size:13px;color:var(--text-muted);line-height:1.6">Yes. Progress has cancel and log pause.</div></div>
+        <div style="border-bottom:1px solid var(--border)"><button @click="open=open===1?null:1" style="width:100%;text-align:left;padding:13px 16px;background:white;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:500"><span>Is it really free?</span><span style="color:var(--text-muted)" x-text="open===1?'−':'+'"></span></button><div x-show="open===1" style="padding:0 16px 13px;font-size:13px;color:var(--text-muted);line-height:1.6">Yes. Up to 50 pages, no signup, no charge.</div></div>
+        <div style="border-bottom:1px solid var(--border)"><button @click="open=open===2?null:2" style="width:100%;text-align:left;padding:13px 16px;background:white;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:500"><span>How do you score?</span><span style="color:var(--text-muted)" x-text="open===2?'−':'+'"></span></button><div x-show="open===2" style="padding:0 16px 13px;font-size:13px;color:var(--text-muted);line-height:1.6">We score each area out of 100, then weight them. Anything we could not measure is left out.</div></div>
+        <div style="border-bottom:1px solid var(--border)"><button @click="open=open===3?null:3" style="width:100%;text-align:left;padding:13px 16px;background:white;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:500"><span>Do you keep my pages?</span><span style="color:var(--text-muted)" x-text="open===3?'−':'+'"></span></button><div x-show="open===3" style="padding:0 16px 13px;font-size:13px;color:var(--text-muted);line-height:1.6">Page HTML for 30 days, your report for 90 days.</div></div>
+        <div style="border-bottom:1px solid var(--border)"><button @click="open=open===4?null:4" style="width:100%;text-align:left;padding:13px 16px;background:white;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:500"><span>Do you follow robots.txt?</span><span style="color:var(--text-muted)" x-text="open===4?'−':'+'"></span></button><div x-show="open===4" style="padding:0 16px 13px;font-size:13px;color:var(--text-muted);line-height:1.6">Yes. We respect robots.txt and any crawl delay you set.</div></div>
+        <div><button @click="open=open===5?null:5" style="width:100%;text-align:left;padding:13px 16px;background:white;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:500"><span>Can I stop a scan?</span><span style="color:var(--text-muted)" x-text="open===5?'−':'+'"></span></button><div x-show="open===5" style="padding:0 16px 13px;font-size:13px;color:var(--text-muted);line-height:1.6">Yes — hit cancel or pause the log while it runs.</div></div>
       </div>
     </section>
   </main>
@@ -912,10 +941,10 @@ function homePage() {
 
 function toolPage(tool) {
   const cfg = {
-    'seo-audit': { h1:'SEO Audit', sub:'Titles, metas, headings, indexability.', stats:[['14','checks'],['50','pages'],['≤2m','time']], checks:['Title present','Meta description','Canonical','No noindex','Single H1','Heading order','Viewport','Lang','Alt text','JSON-LD'], cats:[['Indexability','30'],['Content','25'],['Metadata','25'],['Semantics','20']], ex:{s:82,g:'B',p:22,t:'78s'} },
+    'seo-audit': { h1:'SEO Audit', sub:'We check titles and headings the way Google does.', stats:[['14','checks'],['50','pages'],['≤2m','time']], checks:['Title present','Meta description','Canonical','No noindex','Single H1','Heading order','Viewport','Lang','Alt text','JSON-LD'], cats:[['Indexability','30'],['Content','25'],['Metadata','25'],['Semantics','20']], ex:{s:82,g:'B',p:22,t:'78s'} },
     'adsense-audit': { h1:'AdSense Audit', sub:'Readiness for AdSense programme.', stats:[['14','checks'],['15','gate'],['30 60 90','plan']], checks:['Privacy','About','Contact','Terms','Nav links','Median ≥300','Thin pages','Duplicates','Prohibited','ads.txt','Headings','Navigation'], cats:[['Required','30'],['Content','30'],['Policy','20'],['Nav','20']], ex:{s:68,g:'D',p:18,t:'92s'} },
-    'speed-audit': { h1:'Speed Audit', sub:'Weight, requests, render blocking.', stats:[['12','checks'],['3','gate'],['100MB','cap']], checks:['Weight 1.5MB','HTML size','Requests 50','Third party','Render block','TTFB 600','Cache','Compression','robots.txt','sitemap.xml'], cats:[['Weight','35'],['Render','30'],['Network','20'],['Well known','15']], ex:{s:74,g:'C',p:3,t:'24s'} },
-    'link-audit': { h1:'Link Audit', sub:'Graph, redirects, orphans, rel.', stats:[['9','checks'],['5','gate'],['≤3','depth']], checks:['Broken internal','Broken external','Redirect chains','Orphans','Depth 3','Graph healthy','Anchors','Rel correct','Canonical'], cats:[['Integrity','35'],['Structure','35'],['Hygiene','30']], ex:{s:91,g:'A',p:12,t:'41s'} }
+    'speed-audit': { h1:'Speed Audit', sub:'We measure how heavy pages are and what slows them down.', stats:[['12','checks'],['3','gate'],['100MB','cap']], checks:['Weight 1.5MB','HTML size','Requests 50','Third party','Render block','TTFB 600','Cache','Compression','robots.txt','sitemap.xml'], cats:[['Weight','35'],['Render','30'],['Network','20'],['Well known','15']], ex:{s:74,g:'C',p:3,t:'24s'} },
+    'link-audit': { h1:'Link Audit', sub:'We map links, find redirects and pages no one links to.', stats:[['9','checks'],['5','gate'],['≤3','depth']], checks:['Broken internal','Broken external','Redirect chains','Orphans','Depth 3','Graph healthy','Anchors','Rel correct','Canonical'], cats:[['Integrity','35'],['Structure','35'],['Hygiene','30']], ex:{s:91,g:'A',p:12,t:'41s'} }
   };
   const c = cfg[tool];
   const faq = {
@@ -933,13 +962,13 @@ function toolPage(tool) {
         <p style="font-family:Manrope, sans-serif;color:var(--text-muted);margin:8px 0 16px;font-size:15px;line-height:1.6">${c.sub}</p>
         <form onsubmit="return startTool(event,'${tool}')" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:white;border:1.5px solid var(--border);border-radius:12px;padding:6px;max-width:520px">
           <input class="input" name="url" placeholder="https://example.com" required style="flex:1;min-width:200px;border:none;box-shadow:none;background:transparent" />
-          <button class="btn-primary" type="submit">Run ${c.h1.split(' ')[0]}</button>
+          <button class="btn-primary" type="submit">Check now</button>
         </form>
-        <p style="font-size:12px;color:var(--text-muted);margin-top:8px">60 to 120 seconds Gate ${CONFIG.gates[tool]} pages Live log</p>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:8px">About a minute. Needs ${CONFIG.gates[tool]} pages. Live feed as we go.</p>
         <div id="toolProgress" style="display:none;margin-top:14px"></div>
       </div>
-      <div style="flex:1;min-width:260px;max-width:440px;display:flex;justify-content:center">
-        <img src="/hero-illustration.png" alt="Audit illustration" style="width:100%;max-width:400px;height:auto;border-radius:12px;object-fit:contain" loading="lazy" />
+      <div style="flex:1;min-width:260px;max-width:440px;display:flex;justify-content:center;background:var(--bg);border-radius:12px;padding:6px">
+        <img src="/hero-illustration.png" alt="Audit light" class="light-img" style="width:100%;max-width:400px;height:auto;border-radius:12px;object-fit:contain;background:var(--bg)" loading="lazy" /><img src="/hero-illustration-dark.png" alt="Audit dark" class="dark-img" style="width:100%;max-width:400px;height:auto;border-radius:12px;object-fit:contain;background:var(--bg)" loading="lazy" />
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px">
@@ -1050,26 +1079,26 @@ function scanPage(scanId) {
         </div>
         <div style="padding:12px 16px">
           <div class="progress"><div id="progressFill" class="progress-fill" style="width:${scan.progress}%"></div></div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-top:6px"><span id="stageLabel">${scan.stage} · ${scan.progress}%</span><span>A 50 page site usually takes 60 to 120 seconds</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-top:6px"><span id="stageLabel">${scan.stage} · ${scan.progress}%</span><span style="font-size:11px;opacity:.9">about a minute</span></div>
         </div>
         <div style="display:grid;grid-template-columns:280px 1fr;gap:0;border-top:1px solid var(--border)" id="progressGrid">
           <div style="border-right:1px solid var(--border);padding:16px;background:var(--bg-muted)">
             <h4 style="font-size:14px;margin:0 0 12px">Stages</h4>
             <ul id="stageList" style="list-style:none;padding:0;margin:0;font-size:14px">
-              <li data-stage="resolving" style="padding:8px 0;display:flex;gap:8px;align-items:center"><span class="severity-dot sev-low"></span>Resolving host</li>
-              <li data-stage="robots" style="padding:8px 0;display:flex;gap:8px;align-items:center"><span class="severity-dot sev-low"></span>robots.txt</li>
-              <li data-stage="sitemap" style="padding:8px 0;display:flex;gap:8px;align-items:center"><span class="severity-dot sev-low"></span>Sitemap</li>
-              <li data-stage="crawling" style="padding:8px 0;display:flex;gap:8px;align-items:center"><span class="severity-dot sev-low"></span>Crawling <span id="crawlCount">0/${CONFIG.gates[scan.tool]}</span></li>
-              <li data-stage="analysing" style="padding:8px 0;display:flex;gap:8px;align-items:center"><span class="severity-dot sev-low"></span>Analysing pages</li>
-              <li data-stage="scoring" style="padding:8px 0;display:flex;gap:8px;align-items:center"><span class="severity-dot sev-low"></span>Scoring checks</li>
+              <li data-stage="resolving" style="padding:8px 0;display:flex;gap:8px;align-items:center"><span class="severity-dot sev-low"></span>Looking up site</li>
+              <li data-stage="robots" style="padding:8px 0;display:flex;gap:8px;align-items:center"><span class="severity-dot sev-low"></span>Checking permissions</li>
+              <li data-stage="sitemap" style="padding:8px 0;display:flex;gap:8px;align-items:center"><span class="severity-dot sev-low"></span>Finding pages</li>
+              <li data-stage="crawling" style="padding:8px 0;display:flex;gap:8px;align-items:center"><span class="severity-dot sev-low"></span>Visiting pages <span id="crawlCount">0/${CONFIG.gates[scan.tool]}</span></li>
+              <li data-stage="analysing" style="padding:8px 0;display:flex;gap:8px;align-items:center"><span class="severity-dot sev-low"></span>Checking content</li>
+              <li data-stage="scoring" style="padding:8px 0;display:flex;gap:8px;align-items:center"><span class="severity-dot sev-low"></span>Scoring</li>
             </ul>
-            <div style="margin-top:16px;font-size:12px;color:var(--text-muted)">Live log log newest-first, pausable. 200 rows max.</div>
-            <button id="pauseLog" class="btn-secondary" style="margin-top:8px;font-size:12px;padding:6px 10px" onclick="togglePause()">Pause log</button>
+            <div style="margin-top:16px;font-size:12px;color:var(--text-muted)">Live feed newest first. Pause anytime. Up to 200 lines.</div>
+            <button id="pauseLog" class="btn-secondary" style="margin-top:8px;font-size:12px;padding:6px 10px" onclick="togglePause()">Pause</button>
           </div>
           <div style="padding:16px;max-height:420px;overflow:auto;background:white">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-              <h4 style="font-size:14px;margin:0">Live log log</h4>
-              <span style="font-size:12px;color:var(--text-muted)">200 · 312 ms · 41 KB · /path</span>
+              <h4 style="font-size:14px;margin:0">Live feed</h4>
+              <span style="font-size:12px;color:var(--text-muted)"><span id="logCount">0</span> lines · live</span>
             </div>
             <div id="liveLog" style="font-family:JetBrains Mono,monospace;font-size:12px;line-height:1.6"></div>
           </div>
@@ -1078,7 +1107,7 @@ function scanPage(scanId) {
       <div id="scanState" data-id="${scan.id}" data-status="${scan.status}" style="display:none"></div>
     `}
 
-    <div style="margin-top:16px;font-size:12px;color:var(--text-muted)">Scan ID: ${scan.id} · Started ${new Date(scan.started_at).toLocaleString()} · ${scan.rulepack_version}</div>
+    <div style="margin-top:16px;font-size:12px;color:var(--text-muted)">ID ${scan.id.slice(0,8)} started ${new Date(scan.started_at).toLocaleTimeString()} · ${scan.tool}</div>
   </main>
   <style>@media(max-width:768px){ #progressGrid{grid-template-columns:1fr !important} #progressGrid>div:first-child{border-right:none;border-bottom:1px solid var(--border)} }</style>
   <script>
@@ -1098,6 +1127,7 @@ function scanPage(scanId) {
     row.innerHTML='<span style="color:'+statusColor+';min-width:36px">'+(entry.status||' ')+'</span><span style="color:var(--text-muted);min-width:64px">'+entry.ms+' ms</span><span style="color:var(--text-muted);min-width:56px">'+entry.kb+' KB</span><span class="wrap" style="flex:1">'+entry.path+'</span>';
     log.prepend(row);
     while(log.children.length>200) log.removeChild(log.lastChild);
+    const cnt=document.getElementById('logCount'); if(cnt) cnt.textContent=log.children.length;
   }
   function updateStage(data){
     document.getElementById('progressFill').style.width=data.progress+'%';
@@ -1204,10 +1234,11 @@ function reportPage(scanId) {
           <div class="score-dial score-${scan.grade}" style="width:64px;height:64px;font-size:20px;border-width:4px">${scan.toolScore ?? ' '}</div>
           <div>
             <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><strong>${scan.grade||' '}</strong><span class="badge badge-info">${scan.confidence?.level||' '} confidence</span><span style="font-size:12px;color:var(--text-muted)">${scan.confidence?.reason||''} · Measured by us</span></div>
-            <div style="font-size:14px;color:var(--text-muted)">${scan.url} · ${totalPages} pages · ${elapsed}s · ${scan.tool} v1</div>
+            <div style="font-size:14px;color:var(--text-muted)">${new URL(scan.url).hostname} · ${totalPages} pages · ${elapsed}s · ${scan.tool}</div>
           </div>
         </div>
-        <div style="display:flex;gap:8px">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a href="/${scan.tool}?q=${encodeURIComponent(scan.url)}" class="btn-secondary" style="text-decoration:none">Rescan</a>
           <button class="btn-secondary" onclick="downloadCSV()">CSV</button>
           <button class="btn-secondary" onclick="window.print()">Print/PDF</button>
           <button class="btn-secondary" onclick="share()">Share</button>
@@ -1268,12 +1299,21 @@ function reportPage(scanId) {
           </ol>
           <p style="font-size:12px;color:var(--text-muted)">Rescan diff shows score delta, resolved and new findings.</p>
         </div>
-        <p style="font-size:12px;color:var(--text-muted);margin-top:8px">independent analysis from public documentation and our own measurements;  used.</p>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:8px">We read the public docs and measured it ourselves. No guessing.</p>
       </div>
       ` : ''}
 
+      <!-- Findings controls -->
+      <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <input id="findingsSearch" placeholder="Search checks" class="input" style="max-width:260px;padding:8px 12px;font-size:13px" oninput="filterFindings(this.value)">
+        <select id="statusFilter" class="input" style="max-width:160px;padding:8px 10px;font-size:13px" onchange="filterFindings(document.getElementById('findingsSearch').value)">
+          <option value="">All results</option><option value="fail">Fails only</option><option value="warn">Warnings</option><option value="pass">Passed</option><option value="unknown">Not measured</option>
+        </select>
+        <button class="btn-secondary" style="padding:8px 12px;font-size:13px" onclick="expandAll(true)">Open all</button>
+        <button class="btn-secondary" style="padding:8px 12px;font-size:13px" onclick="expandAll(false)">Close all</button>
+      </div>
       <!-- Findings grouped by severity -->
-      <div style="margin-top:24px">
+      <div style="margin-top:16px">
         <h2 style="font-size:20px;margin:0 0 12px">Findings</h2>
         ${severityOrder.map(sev=> {
           const list = grouped[sev]||[];
@@ -1283,7 +1323,7 @@ function reportPage(scanId) {
             <h3 style="font-size:14px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);display:flex;align-items:center;gap:8px"><span class="severity-dot sev-${sev}"></span>${sev} · ${list.length}</h3>
             <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;background:white">
               ${list.map(c=> `
-                <div x-data="{open:false}" style="border-bottom:1px solid var(--border)">
+                <div x-data="{open:false}" data-check-row data-check="${c.check_id} ${c.message}" data-status="${c.status}" style="border-bottom:1px solid var(--border)">
                   <button @click="open=!open" style="width:100%;display:flex;gap:12px;align-items:center;padding:12px;background:white;border:none;cursor:pointer;text-align:left">
                     <span class="badge ${c.status==='pass'?'badge-success':c.status==='fail'?'badge-danger':c.status==='warn'?'badge-warning':'badge-unknown'}" style="min-width:90px;justify-content:center">${c.status==='unknown'?'Not measured':c.status} · ${c.severity}</span>
                     <span style="flex:1;font-size:14px;font-weight:500">${c.check_id}</span>
@@ -1357,6 +1397,22 @@ function reportPage(scanId) {
       const txt=r.textContent.toLowerCase();
       r.style.display=txt.includes(q.toLowerCase())?'':'none';
     });
+  }
+  function filterFindings(q){
+    const status=document.getElementById('statusFilter').value;
+    const query=q.toLowerCase();
+    document.querySelectorAll('[data-check-row]').forEach(row=>{
+      const txt=row.dataset.check.toLowerCase();
+      const st=row.dataset.status;
+      const matchQuery=!query||txt.includes(query);
+      const matchStatus=!status||st===status;
+      row.style.display= (matchQuery && matchStatus) ? '' : 'none';
+    });
+  }
+  function expandAll(open){
+    document.querySelectorAll('[x-data]').forEach(el=>{ if(el.__x) el.__x.$data.open=open; });
+    // fallback alpine: click
+    if(open) document.querySelectorAll('[x-data] button').forEach(b=>{ if(b.textContent.includes('+')) b.click(); });
   }
   function showRejection(v){
     const map={
