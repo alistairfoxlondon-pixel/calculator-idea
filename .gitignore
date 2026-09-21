@@ -1,0 +1,7 @@
+/vendor
+/node_modules
+/.env
+/storage/app/artifacts/*.json
+/public/build
+/public/hot
+/public/storage

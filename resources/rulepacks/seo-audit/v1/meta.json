@@ -1,0 +1,11 @@
+{
+  "version": "v1",
+  "tool": "seo-audit",
+  "released_at": "2026-09-20",
+  "categories": [
+    {"id": "indexability", "label": "Indexability", "weight": 30},
+    {"id": "content", "label": "Content & Headings", "weight": 25},
+    {"id": "metadata", "label": "Metadata", "weight": 25},
+    {"id": "semantics", "label": "Semantics & Accessibility", "weight": 20}
+  ]
+}

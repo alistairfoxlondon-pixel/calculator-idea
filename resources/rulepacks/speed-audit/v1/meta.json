@@ -1,0 +1,11 @@
+{
+  "version": "v1",
+  "tool": "speed-audit",
+  "released_at": "2026-09-20",
+  "categories": [
+    {"id": "weight", "label": "Page Weight", "weight": 35},
+    {"id": "render", "label": "Render Blocking", "weight": 30},
+    {"id": "network", "label": "Network & Caching", "weight": 20},
+    {"id": "well_known", "label": "Well-Known Files", "weight": 15}
+  ]
+}

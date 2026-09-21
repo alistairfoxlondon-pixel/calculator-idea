@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "tool": "link-audit",
+  "released_at": "2026-09-20",
+  "categories": [
+    {"id": "integrity", "label": "Link Integrity", "weight": 35},
+    {"id": "structure", "label": "Site Structure", "weight": 35},
+    {"id": "hygiene", "label": "Rel & Hygiene", "weight": 30}
+  ]
+}

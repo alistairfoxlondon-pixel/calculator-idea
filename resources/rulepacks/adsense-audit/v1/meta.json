@@ -1,0 +1,11 @@
+{
+  "version": "v1",
+  "tool": "adsense-audit",
+  "released_at": "2026-09-20",
+  "categories": [
+    {"id": "required_pages", "label": "Required Pages", "weight": 30},
+    {"id": "content_depth", "label": "Content Depth", "weight": 30},
+    {"id": "policy", "label": "Policy & Prohibited Content", "weight": 20},
+    {"id": "navigation", "label": "Navigation & UX", "weight": 20}
+  ]
+}
