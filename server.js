@@ -724,9 +724,9 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;transition:background 200ms, color 200ms}
 a{color:inherit;text-decoration:none}
 h1,h2,h3{line-height:1.2;letter-spacing:-.02em}
-.container{max-width:1120px;margin:0 auto;padding:0 16px}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
 @media(min-width:768px){.container{padding:0 24px}}
-.header{height:72px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);z-index:50;box-shadow:0 1px 3px rgba(15,23,42,.06)}
+.header{height:68px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);z-index:50}
 .header-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
 .logo{font-weight:700;font-size:18px;display:flex;align-items:center;gap:10px;letter-spacing:-.02em}
 .logo-mark{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px}
@@ -734,24 +734,24 @@ h1,h2,h3{line-height:1.2;letter-spacing:-.02em}
 .nav a{padding:8px 4px;border-bottom:2px solid transparent;transition:all 150ms}
 .nav a:hover{color:var(--text);border-bottom-color:var(--border)}
 .nav a.active{color:var(--text);border-bottom-color:var(--accent)}
-.btn-primary{background:var(--accent);color:white;border:none;border-radius:999px;padding:12px 20px;font-weight:600;font-size:14px;cursor:pointer;transition:all 200ms;box-shadow:0 4px 14px rgba(249,115,22,.28);display:inline-flex;align-items:center;gap:8px;letter-spacing:.01em}
+.btn-primary{background:var(--accent);color:white;border:none;border-radius:10px;padding:11px 18px;font-weight:600;font-size:14px;cursor:pointer;transition:all 150ms;box-shadow:0 1px 2px rgba(15,23,42,.06);display:inline-flex;align-items:center;gap:6px}
 .btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 4px 12px rgba(249,115,22,.25)}
 .btn-secondary{background:white;border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-weight:500;font-size:14px;cursor:pointer;transition:all 150ms}
 .btn-secondary:hover{border-color:var(--text-muted);background:var(--bg-muted)}
-.card{border:1px solid var(--border);border-radius:16px;background:white;box-shadow:0 1px 3px rgba(15,23,42,.05), 0 4px 12px rgba(15,23,42,.04);padding:22px;transition:all 200ms}
-.card:hover{box-shadow:0 8px 24px rgba(15,23,42,.10), 0 4px 8px rgba(15,23,42,.06);transform:translateY(-2px)}
+.card{border:1px solid var(--border);border-radius:12px;background:white;box-shadow:0 1px 2px rgba(15,23,42,.04);padding:20px;transition:all 180ms}
+.card:hover{box-shadow:0 4px 12px rgba(15,23,42,.06);transform:none}
 @media(min-width:768px){.card{padding:24px}}
 .card-muted{background:var(--bg-muted);border-color:var(--border)}
-.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid var(--border);letter-spacing:.02em}
+.badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:600;border:1px solid var(--border);letter-spacing:.03em}
 .badge-success{background:#FFF7ED;color:var(--success);border-color:#FDBA74}
 .badge-warning{background:#FFF7ED;color:var(--warning);border-color:#FDBA74}
 .badge-danger{background:#FEF3F2;color:var(--danger);border-color:#FECDCA}
 .badge-info{background:#F9FAFB;color:var(--text-muted)}
 .severity-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
 .sev-critical{background:var(--danger)} .sev-high{background:#F04438} .sev-medium{background:var(--warning)} .sev-low{background:#2E90FA}
-.progress{height:6px;background:var(--bg-muted);border-radius:999px;overflow:hidden}
+.progress{height:5px;background:var(--bg-muted);border-radius:999px;overflow:hidden}
 .progress-fill{height:100%;background:var(--accent);transition:width 300ms ease;border-radius:999px}
-.input{border:1.5px solid var(--border);border-radius:8px;padding:11px 14px;font-size:14px;width:100%;background:white;transition:all 150ms}
+.input{border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:14px;width:100%;background:white;transition:all 150ms}
 .input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(249,115,22,.12)}
 .input::placeholder{color:var(--text-muted)}
 .score-dial{width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:26px;border:5px solid var(--border);background:white;flex-shrink:0;transition:transform 300ms}
@@ -768,7 +768,7 @@ h1,h2,h3{line-height:1.2;letter-spacing:-.02em}
 @media(max-width:767px){.nav{display:none}.nav.open{display:flex;position:absolute;top:64px;left:0;right:0;background:white;border-bottom:1px solid var(--border);flex-direction:column;padding:16px;gap:0}.nav.open a{padding:12px 16px;border:none}.mobile-menu{display:flex}}
 .hero-input{flex:1;min-width:240px;max-width:520px}
 @media(max-width:640px){.hero-input{min-width:0}}
-.footer{border-top:1px solid var(--border);padding:32px 0 24px;margin-top:64px;background:var(--bg-muted)}
+.footer{border-top:1px solid var(--border);padding:28px 0 20px;margin-top:48px;background:var(--bg-muted)}
 .footer h4{font-size:14px;font-weight:600;margin:0 0 12px;color:var(--text)}
 .footer a{font-size:14px;color:var(--text-muted);display:block;margin:7px 0;transition:color 150ms}
 .footer a:hover{color:var(--text)}
@@ -857,7 +857,7 @@ function homePage() {
           <div style="display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);font-weight:600;margin-bottom:12px"><span style="width:24px;height:2px;background:var(--accent);border-radius:99px"></span> Trusted check · No signup</div>
           <h1 style="font-family:Poppins, Inter, sans-serif;font-size:44px;font-weight:700;letter-spacing:-.04em;line-height:1.02;margin:0;color:var(--text)">Check your site<br><span style="color:var(--accent);position:relative">properly<span style="position:absolute;left:0;right:0;bottom:-4px;height:6px;background:var(--accent);opacity:.15;border-radius:99px"></span></span></h1>
           <p style="font-family:Manrope, Inter, sans-serif;font-size:16px;color:var(--text-muted);margin:14px 0 24px;line-height:1.6;max-width:460px">Drop your link. We'll open the pages for real and tell you what to fix.</p>
-          <form id="heroForm" onsubmit="return startAudit(event)" style="display:flex;gap:8px;align-items:center;background:white;border:1.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 1px 2px rgba(16,24,40,.06);max-width:520px">
+          <form id="heroForm" onsubmit="return startAudit(event)" style="display:flex;gap:8px;align-items:center;background:white;border:1px solid var(--border);border-radius:10px;padding:5px;max-width:520px">
             <input class="input" name="url" placeholder="https://example.com" required style="flex:1;min-width:180px;border:none;box-shadow:none;padding:11px 12px;background:transparent;font-size:14px" />
             <select name="tool" class="input" style="width:120px;border:none;background:var(--bg-muted);padding:9px 10px;font-size:13px">
               <option value="seo-audit">SEO</option>
@@ -869,9 +869,9 @@ function homePage() {
           </form>
           <div id="heroProgress" style="display:none;margin-top:14px"></div>
         </div>
-        <div style="flex:1;min-width:320px;max-width:540px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:12px;box-shadow:0 8px 24px rgba(15,23,42,.06)">
-          <img src="/hero-illustration.png" alt="Website audit light" class="light-img" style="width:100%;max-width:480px;height:auto;border-radius:12px;object-fit:contain" loading="lazy" />
-          <img src="/hero-illustration-dark.png" alt="Website audit dark" class="dark-img" style="width:100%;max-width:480px;height:auto;border-radius:12px;object-fit:contain" loading="lazy" />
+        <div style="flex:1;min-width:320px;max-width:540px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:8px">
+          <img src="/hero-illustration.png" alt="Website audit light" class="light-img" style="width:100%;max-width:480px;height:auto;border-radius:8px;object-fit:contain" loading="lazy" />
+          <img src="/hero-illustration-dark.png" alt="Website audit dark" class="dark-img" style="width:100%;max-width:480px;height:auto;border-radius:8px;object-fit:contain" loading="lazy" />
         </div>
       </div>
     </section>
@@ -883,19 +883,19 @@ function homePage() {
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
           <a href="/seo-audit" class="card" style="padding:0;overflow:hidden;display:block">
-            <div style="height:148px;background:#FFF7ED;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid var(--border)"><div style="width:64px;height:64px;background:white;border:1px solid #FED7AA;border-radius:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(249,115,22,.12)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></div></div>
+            <div style="height:132px;background:#FFF7ED;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid var(--border)"><div style="width:48px;height:48px;background:white;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></div></div>
             <div style="padding:16px"><h3 style="margin:0 0 6px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px"><span style="width:28px;height:28px;border-radius:8px;background:var(--bg-muted);border:1px solid var(--border);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span> SEO Audit</h3><p style="font-size:13px;color:var(--text-muted);margin:0;line-height:1.5">Titles, metas, headings and indexability.</p></div>
           </a>
           <a href="/adsense-audit" class="card" style="padding:0;overflow:hidden;display:block">
-            <div style="height:148px;background:#FFF7ED;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid var(--border)"><div style="width:64px;height:64px;background:white;border:1px solid #FED7AA;border-radius:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(249,115,22,.12)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div></div>
+            <div style="height:132px;background:#FFF7ED;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid var(--border)"><div style="width:48px;height:48px;background:white;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div></div>
             <div style="padding:16px"><h3 style="margin:0 0 6px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px"><span style="width:28px;height:28px;border-radius:8px;background:var(--bg-muted);border:1px solid var(--border);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></span> AdSense Audit</h3><p style="font-size:13px;color:var(--text-muted);margin:0;line-height:1.5">Ready for AdSense review</p></div>
           </a>
           <a href="/speed-audit" class="card" style="padding:0;overflow:hidden;display:block">
-            <div style="height:148px;background:#FFF7ED;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid var(--border)"><div style="width:64px;height:64px;background:white;border:1px solid #FED7AA;border-radius:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(249,115,22,.12)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></div></div>
+            <div style="height:132px;background:#FFF7ED;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid var(--border)"><div style="width:48px;height:48px;background:white;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></div></div>
             <div style="padding:16px"><h3 style="margin:0 0 6px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px"><span style="width:28px;height:28px;border-radius:8px;background:var(--bg-muted);border:1px solid var(--border);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg></span> Speed Audit</h3><p style="font-size:13px;color:var(--text-muted);margin:0;line-height:1.5">Page weight and blocking time</p></div>
           </a>
           <a href="/link-audit" class="card" style="padding:0;overflow:hidden;display:block">
-            <div style="height:148px;background:#FFF7ED;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid var(--border)"><div style="width:64px;height:64px;background:white;border:1px solid #FED7AA;border-radius:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(249,115,22,.12)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div></div>
+            <div style="height:132px;background:#FFF7ED;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid var(--border)"><div style="width:48px;height:48px;background:white;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div></div>
             <div style="padding:16px"><h3 style="margin:0 0 6px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px"><span style="width:28px;height:28px;border-radius:8px;background:var(--bg-muted);border:1px solid var(--border);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/></svg></span> Link Audit</h3><p style="font-size:13px;color:var(--text-muted);margin:0;line-height:1.5">Links and redirects</p></div>
           </a>
         </div>
@@ -912,7 +912,7 @@ function homePage() {
             <div><div style="font-size:18px;font-weight:700">4</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">tools</div></div>
           </div>
         </div>
-        <div style="flex:1;min-width:320px;display:flex;justify-content:center;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:12px;box-shadow:0 8px 24px rgba(15,23,42,.06)"><img src="/about-illustration.png" alt="Team light" class="light-img" style="width:100%;max-width:420px;height:auto;border-radius:8px;object-fit:contain" loading="lazy" /><img src="/about-illustration-dark.png" alt="Team dark" class="dark-img" style="width:100%;max-width:420px;height:auto;border-radius:8px;object-fit:contain" loading="lazy" /></div>
+        <div style="flex:1;min-width:320px;display:flex;justify-content:center;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:8px"><img src="/about-illustration.png" alt="Team light" class="light-img" style="width:100%;max-width:420px;height:auto;border-radius:8px;object-fit:contain" loading="lazy" /><img src="/about-illustration-dark.png" alt="Team dark" class="dark-img" style="width:100%;max-width:420px;height:auto;border-radius:8px;object-fit:contain" loading="lazy" /></div>
       </div>
     </section>
     <section class="container" style="padding:16px 16px 24px" x-data="{open:1}">
@@ -970,7 +970,7 @@ function toolPage(tool) {
         <div style="display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--border);border-radius:999px;padding:5px 10px;background:white;margin-bottom:10px"><span style="width:6px;height:6px;border-radius:999px;background:var(--accent)"></span> Free audit</div>
         <h1 style="font-family:Poppins, Inter, sans-serif;font-size:34px;font-weight:700;letter-spacing:-.02em;line-height:1.1;margin:0">${c.h1}</h1>
         <p style="font-family:Manrope, sans-serif;color:var(--text-muted);margin:8px 0 16px;font-size:15px;line-height:1.6">${c.sub}</p>
-        <form onsubmit="return startTool(event,'${tool}')" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:white;border:1.5px solid var(--border);border-radius:12px;padding:6px;max-width:520px">
+        <form onsubmit="return startTool(event,'${tool}')" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:white;border:1px solid var(--border);border-radius:10px;padding:5px;max-width:520px">
           <input class="input" name="url" placeholder="https://example.com" required style="flex:1;min-width:200px;border:none;box-shadow:none;background:transparent" />
           <button class="btn-primary" type="submit">Check now</button>
         </form>
@@ -978,7 +978,7 @@ function toolPage(tool) {
         <div id="toolProgress" style="display:none;margin-top:14px"></div>
       </div>
       <div style="flex:1;min-width:260px;max-width:440px;display:flex;justify-content:center;background:var(--bg);border-radius:12px;padding:6px">
-        <img src="/hero-illustration.png" alt="Audit light" class="light-img" style="width:100%;max-width:400px;height:auto;border-radius:12px;object-fit:contain;background:var(--bg)" loading="lazy" /><img src="/hero-illustration-dark.png" alt="Audit dark" class="dark-img" style="width:100%;max-width:400px;height:auto;border-radius:12px;object-fit:contain;background:var(--bg)" loading="lazy" />
+        <img src="/hero-illustration.png" alt="Audit light" class="light-img" style="width:100%;max-width:400px;height:auto;border-radius:8px;object-fit:contain;background:var(--bg)" loading="lazy" /><img src="/hero-illustration-dark.png" alt="Audit dark" class="dark-img" style="width:100%;max-width:400px;height:auto;border-radius:8px;object-fit:contain;background:var(--bg)" loading="lazy" />
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px">
